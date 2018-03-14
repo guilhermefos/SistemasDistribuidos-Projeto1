@@ -18,11 +18,11 @@ public class Cliente {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("localhost", 2000);
+        Socket socket = new Socket("localhost", 2200);
         DataOutputStream saida = new DataOutputStream(socket.getOutputStream());
         DataInputStream entrada = new DataInputStream(socket.getInputStream());
         
-        for(int i = 0; i < 2000000000; i++) {
+        for(int i = 0; i < 1; i++) {
             saida.writeInt(i);
             System.out.println("Enviei :"+i);
             

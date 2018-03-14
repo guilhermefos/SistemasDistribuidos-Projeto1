@@ -18,7 +18,7 @@ public class Servidor {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(2000);
+        ServerSocket serverSocket = new ServerSocket(2200);
         System.out.println("Esperando conexão: .......");
         
         Socket socket = serverSocket.accept();
@@ -27,7 +27,7 @@ public class Servidor {
         DataInputStream entrada = new DataInputStream(socket.getInputStream());
         DataOutputStream saida = new DataOutputStream(socket.getOutputStream());
         
-        for (int i = 0; i < 2000000000; i++) {
+        for (int i = 0; i < 1; i++) {
             int linha = entrada.readInt();
             System.out.println("Cliente realizou a conexão");
             saida.writeUTF("Dado do cliente recebido - dado: "+linha);
