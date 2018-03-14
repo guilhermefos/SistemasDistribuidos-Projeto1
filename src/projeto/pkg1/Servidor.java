@@ -17,6 +17,20 @@ public class Servidor {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(2000);
+        System.out.println("Esperando conexão: .......");
+        
+        Socket socket = serverSocket.accept();
+        System.out.println("Conexão aceita, esperando dados ...");
+        
+        DataInputStream entrada = new DataInputStream(socket.getInputStream());
+        DataOutputStream saida = new DataOutputStream(socket.getOutputStream());
+        
+        for (int i = 0; i < 2000000000; i++) {
+            int linha = entrada.readInt();
+            System.out.println("Cliente realizou a conexão");
+            saida.writeUTF("Dado do cliente recebido - dado: "+linha);
+        }
     }
 }
